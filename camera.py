@@ -1,16 +1,22 @@
 # import the opencv library
 from email.mime.image import MIMEImage
-
 import cv2
-import imageio.v3 as iio
 
 # define a video capture object
 vid = cv2.VideoCapture(0)
 
 
 def get_frame():
+    """
+    Capture a video frame, encode it to JPEG format, and return it as a MIMEImage object.
+
+    This function captures a single frame from a video source, converts the frame data
+    to JPEG format, and packages it as a MIMEImage object suitable for attachment in an email.
+
+    :return: A MIMEImage object containing the encoded video frame.
+    :rtype: email.mime.image.MIMEImage
+    """
     # Capture the video frame
-    # by frame
     ret, frame = vid.read()
 
     # Convert the frame data to bytes
