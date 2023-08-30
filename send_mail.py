@@ -28,9 +28,9 @@ def content_for_fire_detection(image):
     email_data.attach(MIMEText(CONTENT + time.ctime()))
 
     # Create our Image Data from the defined image
-    image_data = MIMEImage(image)
-    image_data.add_header('Content-Disposition', 'attachment; filename="image.jpg"')
-    email_data.attach(image_data)
+
+    image.add_header('Content-Disposition', 'attachment; filename="image.jpg"')
+    email_data.attach(image)
 
     return email_data
 
