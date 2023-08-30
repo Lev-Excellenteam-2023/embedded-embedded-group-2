@@ -1,7 +1,40 @@
 import smtplib
+
 from consts import Consts
 from Camera.camera import get_frame
-#change
+
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+
+
+def content_for_fire_detection(image):
+    """
+    Creates the email content for fire detection notification.
+
+    Args:
+        image (bytes): The image data in bytes.
+
+    Returns:
+        MIMEMultipart: A MIME multipart object containing email content.
+    """
+
+    # Create Headers
+    email_data = MIMEMultipart()
+    email_data['Subject'] = SUBJECT
+    email_data['To'] = RECEIVER
+    email_data['From'] = SENDER
+
+    # Attach our text data
+    email_data.attach(MIMEText(CONTENT + time.ctime()))
+
+    # Create our Image Data from the defined image
+
+    image.add_header('Content-Disposition', 'attachment; filename="image.jpg"')
+    email_data.attach(image)
+
+    return email_data
+
 
 def login():
     """

@@ -32,3 +32,4 @@ class Consts:
     RECEIVER = "alexsychev27@gmail.com"
     Smtp_Server = "smtp.gmail.com"
     Port = 587
+
