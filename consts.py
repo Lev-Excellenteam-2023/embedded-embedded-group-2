@@ -30,3 +30,4 @@ load_dotenv()
 SENDER = os.getenv("GMAIL_USERNAME")
 PASSWORD = os.getenv("GMAIL_PASSWORD")
 RECEIVER = "alexsychev27@gmail.com"
+list_of_receivers = ["alexsychev27@gmail.com", "YehudaShani88@gmail.com"]
