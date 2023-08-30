@@ -1,7 +1,7 @@
 from Camera.camera import get_frame, frame_to_image
 from Neural_network.build_model import Model
 from PIL import Image
-from send_mail import gmail_sender, login
+from send_mail import gmail_sender, login, content_for_fire_detection
 
 
 def main():
@@ -13,7 +13,8 @@ def main():
         prediction = model.predict(image)
         if prediction:
             image_to_send = frame_to_image(frame)
-            gmail_sender(session, image_to_send)
+            mail_content = content_for_fire_detection(image_to_send)
+            gmail_sender(session, mail_content.as_string())
             print("Fire detected")
             break
 
