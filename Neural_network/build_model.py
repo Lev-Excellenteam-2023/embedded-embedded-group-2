@@ -30,6 +30,7 @@ class Model:
         processed_img = keras.preprocessing.image.img_to_array(processed_img)
         processed_img = np.expand_dims(processed_img, axis=0)
         prediction = self.model.predict(processed_img)
+        print(prediction)
         return prediction[0][0] < 0.5
 
 
