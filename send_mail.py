@@ -1,6 +1,6 @@
 import smtplib
 from consts import SENDER, RECEIVER, PASSWORD
-from camera import get_frame
+from Camera.camera import get_frame
 
 
 def login():

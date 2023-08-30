@@ -1,6 +1,7 @@
 import keras
 from PIL import Image
 import numpy as np
+import os
 
 """
 Model Architecture
@@ -21,7 +22,8 @@ model = keras.Sequential([,
 class Model:
 
     def __init__(self):
-        self.model = keras.models.load_model("model.keras")
+        father_folder = os.path.dirname(os.path.abspath(__file__))
+        self.model = keras.models.load_model(os.path.join(father_folder, "model.keras"))
 
     def predict(self, img) -> bool:
         processed_img = img.resize((180, 180))

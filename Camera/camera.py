@@ -2,8 +2,6 @@
 from email.mime.image import MIMEImage
 import cv2
 
-# define a video capture object
-vid = cv2.VideoCapture(0)
 
 
 def get_frame():
@@ -17,6 +15,8 @@ def get_frame():
     :rtype: email.mime.image.MIMEImage
     """
     # Capture the video frame
+    # define a video capture object
+    vid = cv2.VideoCapture(0)
     ret, frame = vid.read()
 
     # After the loop release the cap object
