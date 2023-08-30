@@ -22,10 +22,14 @@ def load_dotenv(file_path=".env"):
             os.environ[key] = value
 
 
-# Load variables from .env
-
+load_dotenv()
 
 SENDER = os.getenv("GMAIL_USERNAME")
 PASSWORD = os.getenv("GMAIL_PASSWORD")
 RECEIVER = "alexsychev27@gmail.com"
+SUBJECT = 'Fire detection'
+CONTENT = 'We have detected a possible fire! This is the time and image: '
 list_of_receivers = ["alexsychev27@gmail.com", "YehudaShani88@gmail.com"]
+
+Smtp_Server = "smtp.gmail.com"
+Port = 587

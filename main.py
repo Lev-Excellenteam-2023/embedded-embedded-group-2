@@ -11,7 +11,7 @@ def main():
         frame = get_frame()
         image = Image.fromarray(frame)
         prediction = model.predict(image)
-        if prediction:
+        if True:
             image_to_send = frame_to_image(frame)
             mail_content = content_for_fire_detection(image_to_send)
             gmail_sender(session, mail_content)

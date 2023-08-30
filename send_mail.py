@@ -1,5 +1,7 @@
 import smtplib
-from consts import SENDER, RECEIVER, PASSWORD , list_of_receivers
+import time
+
+from consts import SENDER, RECEIVER, PASSWORD, list_of_receivers, SUBJECT, CONTENT, Smtp_Server, Port
 
 from Camera.camera import get_frame
 
@@ -49,11 +51,11 @@ def login():
     """
     try:
         # creates SMTP session
-        session = smtplib.SMTP(Consts.Smtp_Server, Consts.Port)
+        session = smtplib.SMTP(Smtp_Server, Port)
         # start TLS for security
         session.starttls()
         # Authentication
-        session.login(Consts.SENDER, Consts.PASSWORD)
+        session.login(SENDER, PASSWORD)
         return session
     except Exception as e:
         print("An error occurred:", e)
