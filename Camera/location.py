@@ -1,15 +1,20 @@
-import geocoder
-def get_my_location()->(float, float):
+from digidevice import location
+
+
+def get_my_location() -> (float, float, float):
     """
-    Returns the latitude and longitude of the user's current location.
-    :return: [float, float]
-    :rtype: list
+    Retrieves the current geographic coordinates (latitude, longitude and altitude).
+
+    Returns:
+        tuple: A tuple containing the latitude, longitude and altitude as float values.
     """
-    g = geocoder.ip('me')
-    return g.current_result.latlng
+    loc = location.Location()
+    return loc.position
+
 
 def main():
     print(get_my_location())
+
 
 if __name__ == '__main__':
     main()
