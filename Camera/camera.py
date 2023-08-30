@@ -19,17 +19,20 @@ def get_frame():
     # Capture the video frame
     ret, frame = vid.read()
 
+    # After the loop release the cap object
+    vid.release()
+    # Destroy all the windows
+    cv2.destroyAllWindows()
+    return frame
+
+
+def frame_to_image(frame):
     # Convert the frame data to bytes
     _, buffer = cv2.imencode('.jpg', frame)
     frame_bytes = buffer.tobytes()
 
     # Attach the frame bytes to the email
     image = MIMEImage(frame_bytes, name='frame.jpg')
-
-    # After the loop release the cap object
-    vid.release()
-    # Destroy all the windows
-    cv2.destroyAllWindows()
     return image
 
 
