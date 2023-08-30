@@ -1,7 +1,8 @@
 import smtplib
-import time
-from consts import SENDER, RECEIVER, PASSWORD, SUBJECT, CONTENT
+
+from consts import Consts
 from Camera.camera import get_frame
+
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
@@ -48,11 +49,11 @@ def login():
     """
     try:
         # creates SMTP session
-        session = smtplib.SMTP('smtp.gmail.com', 587)
+        session = smtplib.SMTP(Consts.Smtp_Server, Consts.Port)
         # start TLS for security
         session.starttls()
         # Authentication
-        session.login(SENDER, PASSWORD)
+        session.login(Consts.SENDER, Consts.PASSWORD)
         return session
     except Exception as e:
         print("An error occurred:", e)
@@ -73,7 +74,7 @@ def gmail_sender(session, content):
     """
     try:
         # Send the email using the provided session
-        session.sendmail(SENDER, RECEIVER, content.as_string())
+        session.sendmail(Consts.SENDER, Consts.RECEIVER, content.as_string())
         # Terminate the SMTP session
         session.quit()
     except Exception as e:
