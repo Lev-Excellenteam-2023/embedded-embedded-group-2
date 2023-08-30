@@ -30,3 +30,5 @@ load_dotenv()
 SENDER = os.getenv("GMAIL_USERNAME")
 PASSWORD = os.getenv("GMAIL_PASSWORD")
 RECEIVER = "alexsychev27@gmail.com"
+SUBJECT = 'Fire detection'
+CONTENT = 'We have detected a possible fire in! This is the time and image: '

@@ -32,7 +32,7 @@ def frame_to_image(frame):
     frame_bytes = buffer.tobytes()
 
     # Attach the frame bytes to the email
-    image = MIMEImage(frame_bytes, name='frame.jpg')
+    image = MIMEImage(frame_bytes, name='image.jpg')
     return image
 
 
