@@ -24,12 +24,8 @@ def load_dotenv(file_path=".env"):
 
 # Load variables from .env
 
-class Consts:
-    #My changes
-    load_dotenv()
-    SENDER = os.getenv("GMAIL_USERNAME")
-    PASSWORD = os.getenv("GMAIL_PASSWORD")
-    RECEIVER = "alexsychev27@gmail.com"
-    Smtp_Server = "smtp.gmail.com"
-    Port = 587
 
+SENDER = os.getenv("GMAIL_USERNAME")
+PASSWORD = os.getenv("GMAIL_PASSWORD")
+RECEIVER = "alexsychev27@gmail.com"
+list_of_receivers = ["alexsychev27@gmail.com", "YehudaShani88@gmail.com"]

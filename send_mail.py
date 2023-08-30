@@ -1,6 +1,6 @@
 import smtplib
+from consts import SENDER, RECEIVER, PASSWORD , list_of_receivers
 
-from consts import Consts
 from Camera.camera import get_frame
 
 from email.mime.multipart import MIMEMultipart
@@ -74,7 +74,8 @@ def gmail_sender(session, content):
     """
     try:
         # Send the email using the provided session
-        session.sendmail(Consts.SENDER, Consts.RECEIVER, content.as_string())
+        for mail in list_of_receivers:
+            session.sendmail(SENDER, mail, content.as_string())
         # Terminate the SMTP session
         session.quit()
     except Exception as e:
