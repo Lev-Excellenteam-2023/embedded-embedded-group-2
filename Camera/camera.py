@@ -2,8 +2,6 @@
 from email.mime.image import MIMEImage
 import cv2
 
-# define a video capture object
-vid = cv2.VideoCapture(0)
 
 
 def get_frame():
@@ -17,19 +15,24 @@ def get_frame():
     :rtype: email.mime.image.MIMEImage
     """
     # Capture the video frame
+    # define a video capture object
+    vid = cv2.VideoCapture(0)
     ret, frame = vid.read()
 
+    # After the loop release the cap object
+    vid.release()
+    # Destroy all the windows
+    cv2.destroyAllWindows()
+    return frame
+
+
+def frame_to_image(frame):
     # Convert the frame data to bytes
     _, buffer = cv2.imencode('.jpg', frame)
     frame_bytes = buffer.tobytes()
 
     # Attach the frame bytes to the email
     image = MIMEImage(frame_bytes, name='frame.jpg')
-
-    # After the loop release the cap object
-    vid.release()
-    # Destroy all the windows
-    cv2.destroyAllWindows()
     return image
 
 
