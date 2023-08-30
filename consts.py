@@ -25,6 +25,7 @@ def load_dotenv(file_path=".env"):
 # Load variables from .env
 
 class Consts:
+    #My changes
     load_dotenv()
     SENDER = os.getenv("GMAIL_USERNAME")
     PASSWORD = os.getenv("GMAIL_PASSWORD")
