@@ -1,6 +1,4 @@
 import os
-
-
 def load_dotenv(file_path=".env"):
     """
     Load environment variables from a file and set them in the os.environ dictionary.
@@ -25,8 +23,11 @@ def load_dotenv(file_path=".env"):
 
 
 # Load variables from .env
-load_dotenv()
 
-SENDER = os.getenv("GMAIL_USERNAME")
-PASSWORD = os.getenv("GMAIL_PASSWORD")
-RECEIVER = "alexsychev27@gmail.com"
+class Consts:
+    load_dotenv()
+    SENDER = os.getenv("GMAIL_USERNAME")
+    PASSWORD = os.getenv("GMAIL_PASSWORD")
+    RECEIVER = "alexsychev27@gmail.com"
+    Smtp_Server = "smtp.gmail.com"
+    Port = 587
