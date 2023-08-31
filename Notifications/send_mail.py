@@ -10,12 +10,13 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
 
-def content_for_fire_detection(image):
+def content_for_fire_detection(images, size_of_fire):
     """
     Creates the email content for fire detection notification.
 
     Args:
-        image (bytes): The image data in bytes.
+        images (bytes): The images data in bytes.
+        size_of_fire (int): The size of detected fire.
 
     Returns:
         MIMEMultipart: A MIME multipart object containing email content.
@@ -28,12 +29,14 @@ def content_for_fire_detection(image):
     email_data['From'] = SENDER
 
     # Attach our text data
-    email_data.attach(MIMEText(CONTENT + time.ctime()))
+    email_data.attach(MIMEText(CONTENT + time.ctime() + '\n' + str(size_of_fire) + ' meters'))
 
     # Create our Image Data from the defined image
-
-    image.add_header('Content-Disposition', 'attachment; filename="image.jpg"')
-    email_data.attach(image)
+    counter = 0
+    for image in images:
+        counter += 1
+        image.add_header('Content-Disposition', 'attachment; filename="image{}.jpg"'.format(counter))
+        email_data.attach(image)
 
     return email_data
 
@@ -77,6 +80,7 @@ def gmail_sender(session, content):
     try:
         # Send the email using the provided session
         for mail in list_of_receivers:
+            #content['To'] = mail
             session.sendmail(SENDER, mail, content.as_string())
         # Terminate the SMTP session
         session.quit()

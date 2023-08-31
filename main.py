@@ -8,7 +8,8 @@ from User import User
 
 def main():
     user = User(input("Enter your height of the drone please:"), input("Enter your speed of the drone please:"))
-    #calculate_distance = user.calculate_distance(count_of_frames)
+    counter_of_fire_frames = 0
+    fire_images = []
     model = Model()
     caller = Caller()
     session = login()
@@ -17,11 +18,15 @@ def main():
         image = Image.fromarray(frame)
         prediction = model.predict(image)
         if prediction:
+            counter_of_fire_frames += 1
             image_to_send = frame_to_image(frame)
-            mail_content = content_for_fire_detection(image_to_send)
+            fire_images.append(image_to_send)
+            print("Fire detected")
+        elif counter_of_fire_frames > 0:
+            calculate_distance = user.calculate_distance(counter_of_fire_frames)
+            mail_content = content_for_fire_detection(fire_images, int(calculate_distance))
             gmail_sender(session, mail_content)
             caller.call()
-            print("Fire detected")
             break
 
 
