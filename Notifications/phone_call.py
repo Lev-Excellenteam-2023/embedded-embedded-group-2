@@ -13,8 +13,8 @@ class Caller():
     def call(self):
         self.client.calls.create(
             from_='97233820813',
-            to='+972507245538',
-            url='https://handler.twilio.com/twiml/EH5d6503768fcb97e18e107030bf9d3cec'
+            to='+972515476800',
+            url='https://handler.twilio.com/twiml/EH5c29885042269b8451a70a1a0691d921'
         )
 
 def main():
