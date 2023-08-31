@@ -1,18 +1,27 @@
 from twilio.rest import Client
 
+from consts import load_dotenv
+import os
 
-def Caller():
+
+class Caller():
     def __init__(self):
-        # Your Account SID from twilio.com/console
-        account_sid = "AC1792366dc309d512d311d636fdbaf0e6"
-        # Your Auth Token from twilio.com/console
-        auth_token = "1478aaee9a35288abb5c0723e9e35a8e"
-
+        load_dotenv()
+        account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+        auth_token = os.getenv("TWILIO_AUTH_TOKEN")
         self.client = Client(account_sid, auth_token)
 
     def call(self):
-        call = self.client.calls.create(
+        self.client.calls.create(
             from_='97233820813',
             to='+972507245538',
             url='https://handler.twilio.com/twiml/EH5d6503768fcb97e18e107030bf9d3cec'
         )
+
+def main():
+    caller = Caller()
+    caller.call()
+
+
+if __name__ == '__main__':
+    main()
