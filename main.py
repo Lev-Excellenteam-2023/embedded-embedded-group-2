@@ -24,7 +24,7 @@ def main():
             print("Fire detected")
         elif counter_of_fire_frames > 0:
             calculate_distance = user.calculate_distance(counter_of_fire_frames)
-            mail_content = content_for_fire_detection(fire_images, calculate_distance)
+            mail_content = content_for_fire_detection(fire_images, int(calculate_distance))
             gmail_sender(session, mail_content)
             caller.call()
             break

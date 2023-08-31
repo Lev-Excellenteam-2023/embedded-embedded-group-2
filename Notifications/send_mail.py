@@ -25,11 +25,11 @@ def content_for_fire_detection(images, size_of_fire):
     # Create Headers
     email_data = MIMEMultipart()
     email_data['Subject'] = SUBJECT
-    #email_data['To'] = RECEIVER
+    email_data['To'] = RECEIVER
     email_data['From'] = SENDER
 
     # Attach our text data
-    email_data.attach(MIMEText(CONTENT + time.ctime() + str(size_of_fire) + ' meter'))
+    email_data.attach(MIMEText(CONTENT + time.ctime() + '\n' + str(size_of_fire) + ' meters'))
 
     # Create our Image Data from the defined image
     counter = 0
@@ -80,7 +80,7 @@ def gmail_sender(session, content):
     try:
         # Send the email using the provided session
         for mail in list_of_receivers:
-            content['To'] = mail
+            #content['To'] = mail
             session.sendmail(SENDER, mail, content.as_string())
         # Terminate the SMTP session
         session.quit()
