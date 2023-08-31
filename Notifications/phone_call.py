@@ -1,5 +1,4 @@
 from twilio.rest import Client
-
 from consts import load_dotenv
 import os
 
