@@ -30,6 +30,6 @@ RECEIVER = "alexsychev27@gmail.com"
 SUBJECT = 'Fire detection'
 CONTENT = 'We have detected a possible fire! This is the time and image: '
 list_of_receivers = ["alexsychev27@gmail.com", "YehudaShani88@gmail.com"]
-
+ANGLE = 40
 Smtp_Server = "smtp.gmail.com"
 Port = 587

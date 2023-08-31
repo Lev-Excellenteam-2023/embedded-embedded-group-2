@@ -3,9 +3,12 @@ from Neural_network.build_model import Model
 from PIL import Image
 from Notifications.send_mail import gmail_sender, login, content_for_fire_detection
 from Notifications.phone_call import Caller
+from User import User
 
 
 def main():
+    user = User(input("Enter your height of the drone please:"), input("Enter your speed of the drone please:"))
+    #calculate_distance = user.calculate_distance(count_of_frames)
     model = Model()
     caller = Caller()
     session = login()
